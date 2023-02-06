@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import {db} from './firebase';
+import {collection, getDocs} from 'firebase/firestore';
+import {useEffect} from 'react'
+
+//파이어베이스에서 데이터 가져오기
+
 
 function App() {
+
+  const todosCollectionRef = collection(db, "todos");
+
+  useEffect( ()=>{
+
+    const getLists = async()=>{
+      const data = await getDocs(todosCollectionRef);
+      console.log(data)
+    }
+
+  }, [])
+
+  getLists()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
     </div>
   );
 }
