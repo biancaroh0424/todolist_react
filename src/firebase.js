@@ -33,4 +33,4 @@ const app = initializeApp(firebaseConfig)
 export const oTodosinDB = oDB.ref('todos');
 
 
-export default db = getFirestore(app)
+export const db = getFirestore(app)
